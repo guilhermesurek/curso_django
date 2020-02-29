@@ -24,6 +24,10 @@ def editar_contato(request, id):
         'email': contato.email,
         'twitter': contato.twitter
     })
+    if request.method == "POST":
+        form = ContatoForm(request.POST, instance=contato)
+        if form.is_valid():
+            form.save()
     contatos = Contato.objects.all()
     context = {
         'form': form,
