@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
-from aula4.views import index
+from aula4.views import index as index4
+from aula6.views import index as index6
+from aula6.views import editar_contato
 
 #Aqui criamos uma rota para acessar as imagens dentro do document root
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("aula3.urls")),
-    path('aula4', index),
+    path('aula4', index4),
+    path('aula6', index6),
+    path('aula6/<int:id>', editar_contato),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
