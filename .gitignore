@@ -1,4 +1,4 @@
-myvenv
+.env
 db.sqlite3
 .vscode
 # Created by https://www.gitignore.io/api/python
