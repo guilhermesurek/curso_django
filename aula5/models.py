@@ -32,3 +32,21 @@ class Comentario(models.Model):
 
     def __str__(self):
         return f"{self.autor} no post {self.post}"
+
+class Produto(models.Model):
+    descricao = models.CharField(max_length=50)
+    preco = models.FloatField(null=False)
+    
+    def __str__(self):
+        return self.descricao
+
+class Carrinho(models.Model):
+    usuario = models.CharField(max_length=30)
+    data_criacao = models.DateField(auto_now_add=True)
+    produtos = models.ManyToManyField(Produto, related_name="carrinhos")
+    
+    def valor_total(self):
+        return self.produtos.all().aggregate(models.Sum('preco'))
+
+    def __str__(self):
+        return f"Carrinho do usuario {self.usuario} criado em {self.data_criacao}"
