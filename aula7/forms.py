@@ -13,5 +13,13 @@ class UserLoginForm(forms.Form):
         return username
     
     def clean_password(self):
+        username = self.cleaned_data.get('username')
         password = self.cleaned_data.get('password')
-        
+        if not authenticate(username=username, password=password):
+            raise forms.ValidationError('Senha inválida')
+        return password
+    
+    def save(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        return authenticate(username=username, password=password)

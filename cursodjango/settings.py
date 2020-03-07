@@ -131,3 +131,4 @@ MEDIA_URL = '/media/'
 #Definimos esse cara aqui para setar imagens dentro do link indicando a url para imagens
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+LOGIN_URL = '/login'
