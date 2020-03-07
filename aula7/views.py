@@ -31,6 +31,6 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('login'))
 
-@permission_required('view_carrinho', login_url=reverse_lazy('login'))
+@permission_required('aula5.add_carrinho', login_url=reverse_lazy('login'))
 def permission_view(request):
     return HttpResponse('View restrita para quem tem permissão')
