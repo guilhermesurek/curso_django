@@ -36,6 +36,6 @@ urlpatterns = [
     path('aula7/restrita', restrita),
     path('aula7/view-carrinho', permission_view),
     path('aula9', index9, name='aula9'),
-    path('estatico', index10),
+    path('estatico', index10, name='aula10'),
     path('logout', logout_view, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
