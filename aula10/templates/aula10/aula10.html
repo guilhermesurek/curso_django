@@ -24,7 +24,11 @@
 			<h3 class="text-center">
 				{{titulo|swap|bold|safe}}
 			</h3>
-			Hora Atual: {{hora}}
+			{{request.user|identifica_usuario|safe}} <br>
+			Hora Atual: {{hora}} <br>
+			{% pega_pet_pelo_nome 'Mel' as pet %}
+			<h1>{{pet.nome}}</h1>
+			<h2>{{pet.data_nascimento}}</h2>
 		</div>
 	</div>
 	<div class="row">
