@@ -7,3 +7,8 @@ register = template.Library()
 @stringfilter
 def swap(value):
     return value.swapcase()
+
+@register.filter
+@stringfilter
+def bold(value):
+    return f'<b>{value}</b>'
