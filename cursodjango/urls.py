@@ -24,6 +24,7 @@ from aula7.views import index as index7
 from aula7.views import restrita, logout_view, permission_view
 from aula9.views import index as index9
 from aula10.views import mostra_arquivos_estaticos as index10
+from aula11.views import index as index11
 
 #Aqui criamos uma rota para acessar as imagens dentro do document root
 urlpatterns = [
@@ -37,5 +38,12 @@ urlpatterns = [
     path('aula7/view-carrinho', permission_view),
     path('aula9', index9, name='aula9'),
     path('estatico', index10, name='aula10'),
+    path('aula11', index11),
     path('logout', logout_view, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/',include(debug_toolbar.urls)),
+    ] + urlpatterns
