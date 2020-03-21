@@ -49,6 +49,7 @@ LOCAL_APPS = [
     'aula9',
     'aula10',
     'aula11',
+    'aula12',
 ]
 
 EXTERNAL_APPS = [
@@ -66,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'aula12.middleware.LoginRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'cursodjango.urls'
