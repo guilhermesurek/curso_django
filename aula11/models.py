@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from .managers import CustomPostManager, TecPostManager
 from django.utils import timezone
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 
 class SoftDelete(models.Model):
     deletado_em = models.DateTimeField(null=True, blank=True)
@@ -91,3 +93,12 @@ class Automovel(models.Model):
     marca = models.CharField(max_length=20)
     modelo = models.CharField(max_length=20)
     slug = models.SlugField(unique=True)
+
+class TaggedItem(models.Model):
+    tag = models.SlugField()
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+
+    def __str__(self):
+        return self.tag
