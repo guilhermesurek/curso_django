@@ -78,3 +78,16 @@ class Remetente(Contato, AddressData, Auditoria):
 
 class Destinatario(Contato, AddressData, Auditoria):
     cpf = models.CharField(max_length=11)
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
+    age = models.DateField(blank=True, null=True)
+    twitter = models.CharField(blank=True, null=True, max_length=60)
+
+    def __str__(self):
+        return self.user.username
+
+class Automovel(models.Model):
+    marca = models.CharField(max_length=20)
+    modelo = models.CharField(max_length=20)
+    slug = models.SlugField(unique=True)
