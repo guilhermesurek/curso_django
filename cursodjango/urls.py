@@ -25,6 +25,8 @@ from aula7.views import restrita, logout_view, permission_view
 from aula9.views import index as index9
 from aula10.views import mostra_arquivos_estaticos as index10
 from aula11.views import index as index11
+from aula13.views import aula13 as index13
+from aula13.views import aula13_form
 
 #Aqui criamos uma rota para acessar as imagens dentro do document root
 urlpatterns = [
@@ -39,6 +41,8 @@ urlpatterns = [
     path('aula9', index9, name='aula9'),
     path('estatico', index10, name='aula10'),
     path('aula11', index11),
+    path('aula13', index13),
+    path('aula13-form', aula13_form),
     path('logout', logout_view, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
