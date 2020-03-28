@@ -31,3 +31,12 @@ def aula13_form(request):
         "form": form
     }
     return render(request, 'aula13/index.html', context=contexto)
+
+def aula13_session(request):
+    ja_viu = request.session.get('ja_viu', False)
+    if ja_viu is False:
+        request.session["ja_viu"] = True
+    context = {
+        "ja_viu": ja_viu
+    }
+    return render(request, "aula13/session.html", context=context) 
